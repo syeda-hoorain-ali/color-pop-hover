@@ -1,5 +1,5 @@
 const container = document.querySelector('.container');
-const music = new Audio('./music.mp3');
+// const music = new Audio('./music.mp3');
 let count = 377;
 
 
@@ -19,11 +19,10 @@ boxes.forEach((box) => {
         box.classList.add('active');
         box.style.animationDuration = `${1 + duration}s`;
         box.style.filter = `hue-rotate(${changeColor}deg)`;
-        // console.log('active');
-        music.play();
-        // console.log(music);
-        setTimeout(() => {
-            music.pause();
-        }, 1000)
+        box.addEventListener('animationstart', () => { 
+            const music = new Audio('./music.mp3');
+            music.volume = 0.5;
+            music.play();
+        });
     })
 })
